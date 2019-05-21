@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Test {
@@ -76,7 +77,13 @@ public class Test {
         System.out.println("1" + null);
 
         String str = "上海市徐汇区虹桥路168号-12幢-2702室;areaId=658522;x=31.197757;y=121.440046;";
-        System.out.println(Pattern.compile(".*areaId=\\d{6}.*").matcher(str).matches());
+        String regexp = ".*areaId=(\\d{6}).*";
+        Matcher matcher = Pattern.compile(regexp).matcher(str);
+        String areaId = "";
+        if (matcher.find()) {
+            areaId = matcher.group(1);
+        }
+        System.out.println(areaId);
         str = "1234.56";
 
         System.out.println(str.substring(3, 4));
@@ -86,11 +93,9 @@ public class Test {
         Calendar c1 = Calendar.getInstance();
         Calendar c2 = Calendar.getInstance();
 
-        BigDecimal a = new BigDecimal("50");
-        BigDecimal b = new BigDecimal("16");
-        System.out.println(b.subtract(a).abs());
-
-
+        BigDecimal a = new BigDecimal("0.025");
+        BigDecimal b = new BigDecimal("0.050");
+        System.out.println(a.divide(b));
     }
 
     public static List<String> altList(List<String> ls) {
