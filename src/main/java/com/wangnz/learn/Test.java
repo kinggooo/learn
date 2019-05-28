@@ -96,6 +96,12 @@ public class Test {
         BigDecimal a = new BigDecimal("0.025");
         BigDecimal b = new BigDecimal("0.050");
         System.out.println(a.divide(b));
+
+        regexp = "\\d{2}00\\d{2}";
+        matcher = Pattern.compile(regexp).matcher("310100");
+        if (matcher.find()) {
+            System.out.println(matcher.group(0));
+        }
     }
 
     public static List<String> altList(List<String> ls) {
