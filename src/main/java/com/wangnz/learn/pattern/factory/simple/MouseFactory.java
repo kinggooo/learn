@@ -4,14 +4,6 @@ import com.wangnz.learn.pattern.factory.Mouse;
 import com.wangnz.learn.pattern.factory.prd.DellMouse;
 import com.wangnz.learn.pattern.factory.prd.HpMouse;
 
-public class MouseFactory {
-    public Mouse getMouse(int type) {
-        switch (type) {
-            case 1:
-                return new DellMouse();
-            case 2:
-                return new HpMouse();
-        }
-        return null;
-    }
+public interface MouseFactory {
+    Mouse createMouse();
 }
