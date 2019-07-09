@@ -102,6 +102,20 @@ public class Test {
         if (matcher.find()) {
             System.out.println(matcher.group(0));
         }
+
+
+        String template = "尊敬的{n}，您的借款本月应还{f}元，系统已成功扣款，如有疑问请致电详询{1}。";
+
+        sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date d1 = sdf.parse("2018-08-07 17:17:21");
+            Date d2 = sdf.parse("2018-08-10 17:17:54");
+            long diff = sdf.parse(sdf.format(d2)).getTime() - sdf.parse(sdf.format(d1)).getTime();
+            long days = diff / (1000 * 60 * 60 * 24);
+            System.out.println(days);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public static List<String> altList(List<String> ls) {
